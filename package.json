@@ -1,0 +1,97 @@
+{
+  "name": "@mojaloop/repo-name",
+  "version": "0.1.0",
+  "description": "Typescript Mojaloop project template",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mojaloop/<repo-name>.git"
+  },
+  "keywords": [
+    "mojaloop",
+    "services",
+    "<repo-name>"
+  ],
+  "author": "lewisdaly",
+  "contributors": [
+    "Lewis Daly <lewis@vesselstech.com>",
+    "Miguel de Barros <miguel.debarros@modusbox.com>"
+  ],
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/mojaloop/<repo-name>/issues"
+  },
+  "homepage": "https://github.com/mojaloop/<repo-name>#readme",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": "=16.x"
+  },
+  
+  "scripts": {
+    "prepare": "husky install",
+    "pretest": "npm run build",
+    "prepublishOnly": "npm run build",
+    "standard": "echo '\\033[1;33m  This project uses eslint instead of standard. Use `npm run lint` instead.'",
+    "lint": "eslint ./src/**/*.ts ./test/**/*.ts",
+    "lint:fix": "npm run lint -- --fix",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "start": "npm run start:no-build",
+    "start:no-build": "node dist/index.js",
+    "start:build": "npm run build && npm run start:no-build",
+    "test": "npm run test:unit",
+    "test:unit": "npx jest --testMatch='**/test/unit/**/*.test.ts' --reporters=default",
+    "test:xunit": "JEST_JUNIT_OUTPUT_DIR=./test/reports/ JEST_JUNIT_OUTPUT_NAME=xunit.xml npm run test:unit -- --reporters=jest-junit",
+    "test:coverage": "npm run test:unit -- --coverage --coverageThreshold='{}'",
+    "test:coverage-check": "npm run test:unit -- --coverage",
+    "test:int": "npx jest --testMatch='**/test/integration/**/*.test.ts' --reporters=default",
+    "test:functional": "echo \"ACTION: Add functional test here, or remove this script. Also check CI configs to comment out the necessary job'\"",
+    "warn-pre-commit": "echo \"pre commit tasks running. build and test\"",
+    "audit:resolve": "npx resolve-audit --production",
+    "audit:check": "npx check-audit --production",
+    "dep:check": "npx --no-install ncu -e 2",
+    "dep:update": "npx --no-install ncu -u",
+    "release": "npx standard-version --no-verify --releaseCommitMessageFormat 'ci(release): {{currentTag}} [skip ci]'",
+    "snapshot": "npx standard-version --no-verify --skip.changelog --prerelease snapshot --releaseCommitMessageFormat 'ci(snapshot): {{currentTag}}'"
+  },
+  "dependencies": {
+    "tslib": "^2.4.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.0.1",
+    "@commitlint/config-conventional": "^17.0.0",
+    "@types/chai": "^4.3.1",
+    "@types/jest": "^27.5.1",
+    "@types/node": "^17.0.36",
+    "@typescript-eslint/eslint-plugin": "5.26.0",
+    "@typescript-eslint/parser": "5.26.0",
+    "chai": "^4.3.6",
+    "eslint": "8.16.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-import": "2.26.0",
+    "husky": "^8.0.1",
+    "jest": "^28.1.0",
+    "jest-junit": "^13.2.0",
+    "npm-audit-resolver": "3.0.0-7",
+    "npm-check-updates": "13.0.3",
+    "prettier": "2.6.2",
+    "replace": "^1.2.1",
+    "source-map-support": "0.5.21",
+    "standard-version": "^9.5.0",
+    "tap-spec": "5.0.0",
+    "tape": "5.5.3",
+    "tapes": "4.1.0",
+    "ts-jest": "28.0.3",
+    "ts-node": "10.8.0",
+    "tslint": "6.1.3",
+    "typescript": "4.7.2"
+  },
+  "standard-version": {
+    "scripts": {
+      "postchangelog": "replace '\\[mojaloop/#(\\d+)\\]\\(https://github.com/mojaloop/(.*)/issues/(\\d+)\\)' '[mojaloop/#$1](https://github.com/mojaloop/project/issues/$1)' CHANGELOG.md"
+    }
+  }
+}
