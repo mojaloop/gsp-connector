@@ -8,7 +8,7 @@ export class GspTransformer {
     return amountMicros
   }
 
-  static toGspAmountMicrosFromFspiop(fspiopAmount: string): string {
+  static toAmountMicrosFromFspiop(fspiopAmount: string): string {
     // TODO: Implement conversion
     return fspiopAmount
   }
