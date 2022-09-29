@@ -15,6 +15,8 @@ import config from '../shared/config'
 async function post(_context: unknown, _request: Request, h: StateResponseToolkit): Promise<ResponseObject>  {
 
   const getTransferFundsQuotationRequest = _request.payload as gsp.components['schemas']['GetTransferFundsQuotationRequest'];
+  console.log('getTransferFundsQuotationRequest:')
+  console.dir(getTransferFundsQuotationRequest);
 
   // Make POST /thirdpartyTransaction/partyLookup to config.shared.thirdpartySdkEndpoint
 
@@ -26,6 +28,7 @@ async function post(_context: unknown, _request: Request, h: StateResponseToolki
     }
   }
 
+  console.log('thirdpartyTransactionPartyLookupRequest:')
   console.dir(thirdpartyTransactionPartyLookupRequest);
 
   const thirdpartyTransactionPartyLookupUrl = `${config.shared.thirdpartySdkEndpoint}/thirdpartyTransaction/partyLookup`
@@ -40,6 +43,7 @@ async function post(_context: unknown, _request: Request, h: StateResponseToolki
     }
   )
 
+  console.log('thirdpartyTransactionPartyLookupResponse:')
   console.dir(thirdpartyTransactionPartyLookupResponse?.data)
   
   if (thirdpartyTransactionPartyLookupResponse.data?.currentState === 'partyLookupFailure' || thirdpartyTransactionPartyLookupResponse.data?.currentState === 'errored'){
@@ -73,6 +77,7 @@ async function post(_context: unknown, _request: Request, h: StateResponseToolki
     expiration: (new Date(Date.now() + 1000)).toISOString() // TODO: + config.expirationTimeout)
   }
 
+  console.log('thirdpartyTransactionsWithTransactionRequestIdInitiateRequest:')
   console.dir(thirdpartyTransactionsWithTransactionRequestIdInitiateRequest)
   // TODO: Map getTransferFundsQuotationRequest request and party look up response values to initiate lookup request
   // Make POST /thirdpartyTransactions/{transactionRequestId}/initiate to config.shared.thirdpartySdkEndpoint
@@ -89,6 +94,7 @@ async function post(_context: unknown, _request: Request, h: StateResponseToolki
     }
   )
 
+  console.log('thirdpartyTransactionsWithTransactionRequestIdInitiateResponse:')
   console.dir(thirdpartyTransactionsWithTransactionRequestIdInitiateResponse?.data)
 
   if (thirdpartyTransactionsWithTransactionRequestIdInitiateResponse.data?.currentState === 'errored'){
@@ -140,6 +146,8 @@ async function post(_context: unknown, _request: Request, h: StateResponseToolki
     }
   }
 
+  console.log('getTransferFundsQuotationresponse')
+  console.dir(response)
   return h.response(response).code(200)
 }
 
