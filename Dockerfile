@@ -25,6 +25,8 @@ COPY package.json package-lock.json* /opt/app/
 
 RUN npm ci --production --ignore-scripts
 
+RUN npm rebuild
+
 ## Copy of dist directory from builder
 COPY --from=builder /opt/app/dist ./dist
 
