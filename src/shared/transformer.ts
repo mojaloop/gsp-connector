@@ -8,6 +8,11 @@ export class GspTransformer {
     return amountMicros
   }
 
+  static toGspAmountMicrosFromFspiop(fspiopAmount: string): string {
+    // TODO: Implement conversion
+    return fspiopAmount
+  }
+
   // @ts-expect-error: TODO
   static toUUID(associationId: string): string {
     // TODO: Implement conversion

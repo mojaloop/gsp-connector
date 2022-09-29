@@ -6,6 +6,6 @@
     "color": true
   },
   "shared": {
-    "thirdpartySdkEndpoint": "0.0.0.0:4006"
+    "thirdpartySdkEndpoint": "http://localhost:4040"
   }
 }
