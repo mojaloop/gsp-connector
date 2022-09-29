@@ -2,8 +2,6 @@
   "include": [
     "src",
     "test",
-    "types/ambient.d.ts",
-    "types/mlnumber.d.ts",
     "jest.bdd.config.js",
     "jest.config.js",
     "jest.integration.config.js",
@@ -21,7 +19,6 @@
     "jest.config.js"
   ],
   "compilerOptions": {
-    // "target": "es2018",
     "target": "es2020",
     "module": "commonjs",
     "rootDirs": [
