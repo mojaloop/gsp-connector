@@ -2,7 +2,7 @@
   "extends": "./tsconfig.json",
   "include": [
     "src",
-    "ambient.d.ts",
+    "types/ambient.d.ts",
     "config",
   ],
   "exclude": [
