@@ -154,23 +154,7 @@ paths:
         header and `paymentIntegratorAccountId` is the idempotency key and
         uniquely identifies this transaction. All mutations on this transaction
         (refunds) populate the `requestId` value in the `capture_request_id`
-        field. An example request looks like: { \"requestHeader\": {
-        \"protocolVersion\": { \"major\": 2 }, \"requestId\":
-        \"bWVyY2hhbnQgdHJhbnNhY3Rpb24gaWQ\", \"requestTimestamp\": {
-        \"epochMillis\": \"1502220196077\" }, \"paymentIntegratorAccountId\":
-        \"InvisiCashUSA_USD\" }, \"googlePaymentToken\": { \"issuerId\": {
-        \"value\": \"Mojaloop\" }, \"token\":
-        \"ZXhhbXBsZSB1bmlxdWUgcGF5bWVudCB0b2tlbiB2YWx1ZQ\" },
-        \"transactionDescription\": \"Google - Music\", \"amount\": {
-        \"amountMicros\": \"728000000\", \"currencyCode\": \"INR\" },
-        \"destinationBankAccount\": { \"bankAccountId\": { \"accountNumber\": {
-        \"localAccountNumber\": \"1234-5678-91\" }, \"swiftBic\":
-        \"XXXXSGS0XXX\" }, \"bankAccountOwner\": { \"name\": \"Sam User\" } },
-        \"transferFundsContext\": {} } An example response looks like: {
-        \"responseHeader\": { \"responseTimestamp\": { \"epochMillis\":
-        \"1481900013178\" } }, \"result\": {\"success\": {}},
-        \"paymentIntegratorTransactionId\":
-        \"aW50ZWdyYXRvciB0cmFuc2FjdGlvbiBpZA\" } "
+        field. An example request looks like: { \"requestHeader\": { \"protocolVersion\": { \"major\": 2 }, \"requestId\": \"bWVyY2hhbnQgdHJhbnN\", \"requestTimestamp\": { \"epochMillis\": \"1502220196077\" }, \"paymentIntegratorAccountId\": \"Mojaloop\" }, \"googlePaymentToken\": { \"issuerId\": { \"value\": \"Mojaloop\" }, \"token\": \"ZXhhbXBsZSB1bmlxdWUgcGF5bWVudC\" }, \"transactionDescription\": \"Payment\", \"amount\": { \"amountMicros\": \"5001000\", \"currencyCode\": \"SGD\" }, \"payeeProxy\": { \"payeeProxyKey\": { \"networkId\": \"paynow\", \"phoneNumber\": \"+6577778888\" }, \"payeeProxyLookupRequestId\": \"bWVyY2hhbnQgdHJhbnN\" }, \"getTransferFundsQuotationRequestId\": \"bWVyY2hhbnQgdHJhbnN\", \"challengeResults\": [{ \"challengeOptionId\": \"8StMrYBbh\", \"fidoAssertion\": { \"rawId\": \"Aad50Szy7ZFb8f7wd\", \"id\": \"Aad50Szy7ZFb8f7wdfMmFO\", \"response\": { \"authenticatorData\": \"zHUM-fXe8fPTc7IQdAU8xhonRmZ\", \"signature\": \"MEUCIHxzf1KZNJTb831gqw0oit-6ms8Do\", \"userHandle\": \"Kosv9fPtkDoh4Oz7Yq_pVgWHS8H\", \"clientDataJSON\": \"eyJ0eXBlIjoid2ViYXV0aG4uZ2V\" }, \"type\": \"public-key\" } }] }"
       requestBody:
         content:
           application/json:
