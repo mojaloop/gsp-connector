@@ -23,7 +23,7 @@ WORKDIR /opt/app
 
 COPY package.json package-lock.json* /opt/app/
 
-RUN npm ci --production
+RUN npm ci --production --ignore-scripts
 
 ## Copy of dist directory from builder
 COPY --from=builder /opt/app/dist ./dist
