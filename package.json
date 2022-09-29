@@ -29,7 +29,6 @@
   "engines": {
     "node": "=16.x"
   },
-
   "scripts": {
     "prepare": "husky install",
     "pretest": "npm run build",
@@ -37,10 +36,10 @@
     "standard": "echo '\\033[1;33m  This project uses eslint instead of standard. Use `npm run lint` instead.'",
     "lint": "eslint ./src/**/*.ts ./test/**/*.ts",
     "lint:fix": "npm run lint -- --fix",
-    "build": "tsc",
+    "build": "tsc -p ./tsconfig.build.json  && cp -R config dist && mkdir -p ./dist/src/interface/ && cp ./src/interface/*.yaml ./dist/src/interface/",
     "watch": "tsc -w",
     "start": "npm run start:no-build",
-    "start:no-build": "node dist/index.js",
+    "start:no-build": "node ./dist/src/cli.js all",
     "start:build": "npm run build && npm run start:no-build",
     "test": "npm run test:unit",
     "test:unit": "npx jest --testMatch='**/test/unit/**/*.test.ts' --reporters=default",
@@ -50,21 +49,37 @@
     "test:int": "npx jest --testMatch='**/test/integration/**/*.test.ts' --reporters=default",
     "test:functional": "echo \"ACTION: Add functional test here, or remove this script. Also check CI configs to comment out the necessary job'\"",
     "warn-pre-commit": "echo \"pre commit tasks running. build and test\"",
-    "audit:resolve": "npx resolve-audit --production",
-    "audit:check": "npx check-audit --production",
+    "audit:fix": "npm audit fix",
+    "audit:check": "npx audit-ci --config ./audit-ci.jsonc",
     "dep:check": "npx --no-install ncu -e 2",
     "dep:update": "npx --no-install ncu -u",
     "release": "npx standard-version --no-verify --releaseCommitMessageFormat 'ci(release): {{currentTag}} [skip ci]'",
     "snapshot": "npx standard-version --no-verify --skip.changelog --prerelease snapshot --releaseCommitMessageFormat 'ci(snapshot): {{currentTag}}'"
   },
   "dependencies": {
+    "@hapi/good": "^9.0.1",
+    "@hapi/hapi": "^20.2.2",
+    "@hapi/inert": "^7.0.0",
+    "@hapi/vision": "^7.0.0",
+    "@mojaloop/api-snippets": "^16.0.3",
+    "@mojaloop/central-services-error-handling": "^12.0.4",
+    "@mojaloop/central-services-shared": "^17.3.0",
+    "@mojaloop/sdk-standard-components": "^17.1.1",
+    "blipp": "^4.0.2",
+    "convict": "^6.2.3",
+    "lodash": "^4.17.21",
     "tslib": "^2.4.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
     "@types/chai": "^4.3.3",
-    "@types/jest": "^29.0.3",
+    "@types/convict": "^6.1.1",
+    "@types/hapi__hapi": "^20.0.12",
+    "@types/hapi__inert": "^5.2.3",
+    "@types/hapi__vision": "^5.5.3",
+    "@types/jest": "^29.1.0",
+    "@types/lodash": "^4.14.186",
     "@types/node": "^18.7.23",
     "@typescript-eslint/eslint-plugin": "5.38.1",
     "@typescript-eslint/parser": "5.38.1",
@@ -87,7 +102,15 @@
     "ts-jest": "29.0.2",
     "ts-node": "10.9.1",
     "tslint": "6.1.3",
-    "typescript": "4.8.4"
+    "typescript": "^4.7.4"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged",
+      "post-commit": "git update-index --again",
+      "pre-push": "npm run updates:check && npm run audit:check"
+    }
   },
   "standard-version": {
     "scripts": {

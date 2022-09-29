@@ -1,0 +1,11 @@
+{
+  "requestProcessingTimeoutSeconds": 30,
+  "inspect": {
+    "depth": 4,
+    "showHidden": false,
+    "color": true
+  },
+  "shared": {
+    "thirdpartySdkEndpoint": "0.0.0.0:4006"
+  }
+}
