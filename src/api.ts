@@ -24,6 +24,7 @@ export async function mkStartAPI(
   const apiPath = path.resolve(__dirname, `../src/interface/gsp-api-v3draft-sep29.yaml`)
 
   // prepare API handlers
+  // TODO: Update GSP api with health and metric endpoints
   const joinedHandlers = {
     ...handlers
   }
