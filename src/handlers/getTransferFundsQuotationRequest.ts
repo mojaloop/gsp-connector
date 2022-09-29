@@ -114,7 +114,7 @@ async function post(_context: unknown, _request: Request, h: StateResponseToolki
           }
         },
         "feeAmount": {
-          "amountMicros": GspTransformer.toGspAmountMicrosFromFspiop(initiateResponse.authorization.fees.amount),
+          "amountMicros": GspTransformer.toAmountMicrosFromFspiop(initiateResponse.authorization.fees.amount),
           "currencyCode": initiateResponse.authorization.fees.currency
         },
         // Assuming this is to support multiple authentication methods.
