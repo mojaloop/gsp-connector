@@ -159,7 +159,7 @@ paths:
         \"bWVyY2hhbnQgdHJhbnNhY3Rpb24gaWQ\", \"requestTimestamp\": {
         \"epochMillis\": \"1502220196077\" }, \"paymentIntegratorAccountId\":
         \"InvisiCashUSA_USD\" }, \"googlePaymentToken\": { \"issuerId\": {
-        \"value\": \"InvisiCash\" }, \"token\":
+        \"value\": \"Mojaloop\" }, \"token\":
         \"ZXhhbXBsZSB1bmlxdWUgcGF5bWVudCB0b2tlbiB2YWx1ZQ\" },
         \"transactionDescription\": \"Google - Music\", \"amount\": {
         \"amountMicros\": \"728000000\", \"currencyCode\": \"INR\" },
@@ -1110,10 +1110,18 @@ components:
     GoogleStandardpaymentsTypesV3Success:
       description: Success object of the GetTransferFundsQuotationResponse Result
       properties:
+        payeeProxyLookup:
+          $ref: "#/components/schemas/GoogleStandardpaymentsTypesV3PayeeProxyLookup"
         feeAmount:
           $ref: "#/components/schemas/GoogleStandardpaymentsTypesV2Amount"
         challengeOptions:
           $ref: "#/components/schemas/GoogleStandardpaymentsTypesV3ChallengeOptions"
+    GoogleStandardpaymentsTypesV3PayeeProxyLookup:
+      description: PayeeProxyLookup object of the GetTransferFundsQuotationResponse Result
+        Success
+      properties:
+        displayInfo:
+          $ref: "#/components/schemas/PayeeProxyDisplayInfo"
     GoogleStandardpaymentsTypesV3ChallengeOptions:
       description: ChallengeOptions object of the GetTransferFundsQuotationResponse Result
         Success
