@@ -2,7 +2,9 @@ import { Request, ResponseObject } from '@hapi/hapi'
 import axios from 'axios';
 import ErrorHandler from '@mojaloop/central-services-error-handling'
 import { StateResponseToolkit } from '../server/plugins/state'
-import { thirdpartySdk, gsp } from '@project-interfaces';
+// TODO: figure out why this is not working?
+// import { thirdpartySdk, gsp } from '@project-interfaces';
+import { thirdpartySdk, gsp } from '../interface/types';
 // TODO: figure out why this is not working?
 // import { GspTransformer } from '@project-shared';
 import { GspTransformer } from '../shared';
@@ -33,8 +35,6 @@ async function post(_context: unknown, _request: Request, h: StateResponseToolki
       },
     }
   )
-
-  // const thirdpartyTransactionPartyLookupResponse = thirdpartyTransactionPartyLookupAxiosResponse.data as thirdpartySdk.components["schemas"]["ThirdpartyTransactionPartyLookupResponseSuccess"]
 
   console.dir(thirdpartyTransactionPartyLookupResponse?.data)
   
