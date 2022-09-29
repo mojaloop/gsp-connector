@@ -82,7 +82,8 @@ async function post(_context: unknown, _request: Request, h: StateResponseToolki
   // TODO: Map getTransferFundsQuotationRequest request and party look up response values to initiate lookup request
   // Make POST /thirdpartyTransactions/{transactionRequestId}/initiate to config.shared.thirdpartySdkEndpoint
 
-  const thirdpartyTransactionsWithTransactionRequestIdInitiateUrl = `${config.shared.thirdpartySdkEndpoint}/thirdpartyTransaction/b51ec534-ee48-4575-b6a9-ead2955b8069/initiate`
+  const transactionRequestId = randomUUID()//'b51ec534-ee48-4575-b6a9-ead2955b8069' // TODO: Do we generate this?
+  const thirdpartyTransactionsWithTransactionRequestIdInitiateUrl = `${config.shared.thirdpartySdkEndpoint}/thirdpartyTransaction/${transactionRequestId}/initiate`
   const thirdpartyTransactionsWithTransactionRequestIdInitiateResponse = await axios.post<thirdpartySdk.components["schemas"]["ThirdpartyTransactionIDInitiateResponseSuccess"] | thirdpartySdk.components["schemas"]["ThirdpartyTransactionIDInitiateResponseError"]>(
     thirdpartyTransactionsWithTransactionRequestIdInitiateUrl,
     thirdpartyTransactionsWithTransactionRequestIdInitiateRequest,
@@ -106,7 +107,7 @@ async function post(_context: unknown, _request: Request, h: StateResponseToolki
 
   const initiateResponse = thirdpartyTransactionsWithTransactionRequestIdInitiateResponse.data as thirdpartySdk.components["schemas"]["ThirdpartyTransactionIDInitiateResponseSuccess"]
 
-  const response: gsp.components['schemas']['GetTransferFundsQuotationResponse'] = {
+  const getTransferFundsQuotationResponse: gsp.components['schemas']['GetTransferFundsQuotationResponse'] = {
     "responseHeader": {
       "responseTimestamp": {
         "epochMillis": Date.now().toString()
@@ -129,7 +130,7 @@ async function post(_context: unknown, _request: Request, h: StateResponseToolki
           // challengeOptionId is used in the GSP transferFunds call.
           // Assuming to identify which authentication method was chosen.
           // We can have the GSP connector generate this
-          "challengeOptionId": randomUUID(),
+          "challengeOptionId": transactionRequestId,
           "fido": {
             "challenge": initiateResponse.authorization.challenge,
             "allowCredentials":
@@ -146,9 +147,9 @@ async function post(_context: unknown, _request: Request, h: StateResponseToolki
     }
   }
 
-  console.log('getTransferFundsQuotationresponse')
-  console.dir(response)
-  return h.response(response).code(200)
+  console.log('getTransferFundsQuotationResponse')
+  console.dir(getTransferFundsQuotationResponse)
+  return h.response(getTransferFundsQuotationResponse).code(200)
 }
 
 export default {
