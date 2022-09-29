@@ -17,7 +17,7 @@ export interface paths {
     post: operations["DisassociateAccount"];
   };
   "/v3/transferFunds": {
-    /** Initiates money movement between a customer's account held with Google and the payment processor. The combination of `requestId` within the header and `paymentIntegratorAccountId` is the idempotency key and uniquely identifies this transaction. All mutations on this transaction (refunds) populate the `requestId` value in the `capture_request_id` field. An example request looks like: { "requestHeader": { "protocolVersion": { "major": 2 }, "requestId": "bWVyY2hhbnQgdHJhbnNhY3Rpb24gaWQ", "requestTimestamp": { "epochMillis": "1502220196077" }, "paymentIntegratorAccountId": "InvisiCashUSA_USD" }, "googlePaymentToken": { "issuerId": { "value": "InvisiCash" }, "token": "ZXhhbXBsZSB1bmlxdWUgcGF5bWVudCB0b2tlbiB2YWx1ZQ" }, "transactionDescription": "Google - Music", "amount": { "amountMicros": "728000000", "currencyCode": "INR" }, "destinationBankAccount": { "bankAccountId": { "accountNumber": { "localAccountNumber": "1234-5678-91" }, "swiftBic": "XXXXSGS0XXX" }, "bankAccountOwner": { "name": "Sam User" } }, "transferFundsContext": {} } An example response looks like: { "responseHeader": { "responseTimestamp": { "epochMillis": "1481900013178" } }, "result": {"success": {}}, "paymentIntegratorTransactionId": "aW50ZWdyYXRvciB0cmFuc2FjdGlvbiBpZA" } */
+    /** Initiates money movement between a customer's account held with Google and the payment processor. The combination of `requestId` within the header and `paymentIntegratorAccountId` is the idempotency key and uniquely identifies this transaction. All mutations on this transaction (refunds) populate the `requestId` value in the `capture_request_id` field. An example request looks like: { "requestHeader": { "protocolVersion": { "major": 2 }, "requestId": "bWVyY2hhbnQgdHJhbnNhY3Rpb24gaWQ", "requestTimestamp": { "epochMillis": "1502220196077" }, "paymentIntegratorAccountId": "InvisiCashUSA_USD" }, "googlePaymentToken": { "issuerId": { "value": "Mojaloop" }, "token": "ZXhhbXBsZSB1bmlxdWUgcGF5bWVudCB0b2tlbiB2YWx1ZQ" }, "transactionDescription": "Google - Music", "amount": { "amountMicros": "728000000", "currencyCode": "INR" }, "destinationBankAccount": { "bankAccountId": { "accountNumber": { "localAccountNumber": "1234-5678-91" }, "swiftBic": "XXXXSGS0XXX" }, "bankAccountOwner": { "name": "Sam User" } }, "transferFundsContext": {} } An example response looks like: { "responseHeader": { "responseTimestamp": { "epochMillis": "1481900013178" } }, "result": {"success": {}}, "paymentIntegratorTransactionId": "aW50ZWdyYXRvciB0cmFuc2FjdGlvbiBpZA" } */
     post: operations["TransferFunds"];
   };
   "/v3/getTransferFundsQuotation": {
@@ -449,8 +449,13 @@ export interface components {
     };
     /** @description Success object of the GetTransferFundsQuotationResponse Result */
     GoogleStandardpaymentsTypesV3Success: {
+      payeeProxyLookup?: components["schemas"]["GoogleStandardpaymentsTypesV3PayeeProxyLookup"];
       feeAmount?: components["schemas"]["GoogleStandardpaymentsTypesV2Amount"];
       challengeOptions?: components["schemas"]["GoogleStandardpaymentsTypesV3ChallengeOptions"];
+    };
+    /** @description PayeeProxyLookup object of the GetTransferFundsQuotationResponse Result Success */
+    GoogleStandardpaymentsTypesV3PayeeProxyLookup: {
+      displayInfo?: components["schemas"]["PayeeProxyDisplayInfo"];
     };
     /** @description ChallengeOptions object of the GetTransferFundsQuotationResponse Result Success */
     GoogleStandardpaymentsTypesV3ChallengeOptions: {
@@ -759,7 +764,7 @@ export interface operations {
       };
     };
   };
-  /** Initiates money movement between a customer's account held with Google and the payment processor. The combination of `requestId` within the header and `paymentIntegratorAccountId` is the idempotency key and uniquely identifies this transaction. All mutations on this transaction (refunds) populate the `requestId` value in the `capture_request_id` field. An example request looks like: { "requestHeader": { "protocolVersion": { "major": 2 }, "requestId": "bWVyY2hhbnQgdHJhbnNhY3Rpb24gaWQ", "requestTimestamp": { "epochMillis": "1502220196077" }, "paymentIntegratorAccountId": "InvisiCashUSA_USD" }, "googlePaymentToken": { "issuerId": { "value": "InvisiCash" }, "token": "ZXhhbXBsZSB1bmlxdWUgcGF5bWVudCB0b2tlbiB2YWx1ZQ" }, "transactionDescription": "Google - Music", "amount": { "amountMicros": "728000000", "currencyCode": "INR" }, "destinationBankAccount": { "bankAccountId": { "accountNumber": { "localAccountNumber": "1234-5678-91" }, "swiftBic": "XXXXSGS0XXX" }, "bankAccountOwner": { "name": "Sam User" } }, "transferFundsContext": {} } An example response looks like: { "responseHeader": { "responseTimestamp": { "epochMillis": "1481900013178" } }, "result": {"success": {}}, "paymentIntegratorTransactionId": "aW50ZWdyYXRvciB0cmFuc2FjdGlvbiBpZA" } */
+  /** Initiates money movement between a customer's account held with Google and the payment processor. The combination of `requestId` within the header and `paymentIntegratorAccountId` is the idempotency key and uniquely identifies this transaction. All mutations on this transaction (refunds) populate the `requestId` value in the `capture_request_id` field. An example request looks like: { "requestHeader": { "protocolVersion": { "major": 2 }, "requestId": "bWVyY2hhbnQgdHJhbnNhY3Rpb24gaWQ", "requestTimestamp": { "epochMillis": "1502220196077" }, "paymentIntegratorAccountId": "InvisiCashUSA_USD" }, "googlePaymentToken": { "issuerId": { "value": "Mojaloop" }, "token": "ZXhhbXBsZSB1bmlxdWUgcGF5bWVudCB0b2tlbiB2YWx1ZQ" }, "transactionDescription": "Google - Music", "amount": { "amountMicros": "728000000", "currencyCode": "INR" }, "destinationBankAccount": { "bankAccountId": { "accountNumber": { "localAccountNumber": "1234-5678-91" }, "swiftBic": "XXXXSGS0XXX" }, "bankAccountOwner": { "name": "Sam User" } }, "transferFundsContext": {} } An example response looks like: { "responseHeader": { "responseTimestamp": { "epochMillis": "1481900013178" } }, "result": {"success": {}}, "paymentIntegratorTransactionId": "aW50ZWdyYXRvciB0cmFuc2FjdGlvbiBpZA" } */
   TransferFunds: {
     responses: {
       /** Successful operation */

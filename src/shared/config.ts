@@ -67,7 +67,7 @@ export const ConvictConfig = Convict<ServiceConfig>({
     thirdpartySdkEndpoint: {
       doc: 'Peer/Switch endpoint',
       format: '*',
-      default: '0.0.0.0:4006',
+      default: 'localhost:4040',
       env: 'THIRDPARTY_SDK_ENDPOINT'
     }
   }
