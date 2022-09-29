@@ -1,11 +1,11 @@
 # Typescript Project Template
 
-<!-- ACTION: REPLACE <repo-name> placeholders in this document -->
-[![Git Commit](https://img.shields.io/github/last-commit/mojaloop/<repo-name>.svg?style=flat)](https://github.com/mojaloop/<repo-name>/commits/master)
-[![Git Releases](https://img.shields.io/github/release/mojaloop/<repo-name>.svg?style=flat)](https://github.com/mojaloop/<repo-name>/releases)
-[![Npm Version](https://img.shields.io/npm/v/@mojaloop/<repo-name>.svg?style=flat)](https://www.npmjs.com/package/@mojaloop/<repo-name>)
-[![NPM Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/npm/@mojaloop/<repo-name>.svg?style=flat)](https://www.npmjs.com/package/@mojaloop/<repo-name>)
-[![CircleCI](https://circleci.com/gh/mojaloop/<repo-name>.svg?style=svg)](https://circleci.com/gh/mojaloop/<repo-name>)
+<!-- ACTION: REPLACE gsp-connector placeholders in this document -->
+[![Git Commit](https://img.shields.io/github/last-commit/mojaloop/gsp-connector.svg?style=flat)](https://github.com/mojaloop/gsp-connector/commits/master)
+[![Git Releases](https://img.shields.io/github/release/mojaloop/gsp-connector.svg?style=flat)](https://github.com/mojaloop/gsp-connector/releases)
+[![Npm Version](https://img.shields.io/npm/v/@mojaloop/gsp-connector.svg?style=flat)](https://www.npmjs.com/package/@mojaloop/gsp-connector)
+[![NPM Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/npm/@mojaloop/gsp-connector.svg?style=flat)](https://www.npmjs.com/package/@mojaloop/gsp-connector)
+[![CircleCI](https://circleci.com/gh/mojaloop/gsp-connector.svg?style=svg)](https://circleci.com/gh/mojaloop/gsp-connector)
 
 A project template for new mojaloop services and libraries that uses Typescript.
 
@@ -21,12 +21,12 @@ This project provides a decent starting point for a new mojaloop library using t
 <!-- NOTE: setup steps for this repo -->
 1. Go to <https://github.com/new> to create a new repo
 2. Select the "mojaloop/template-typescript-public" template
-3. Find and replace all instances of `<repo-name>` globally across the whole project with your new project's name
+3. Find and replace all instances of `gsp-connector` globally across the whole project with your new project's name
 4. Update the package name and version to match in `package.json`:
 
     ```json
       "name": "@mojaloop/repo-name",
-      "version": "0.1.0", 
+      "version": "0.1.0",
       ...
     ```
 
