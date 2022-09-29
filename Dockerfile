@@ -29,6 +29,6 @@ RUN npm ci --production
 COPY --from=builder /opt/app/dist ./dist
 
 ## Expose any application ports
-# EXPOSE <PORT>
+EXPOSE 3000
 
 CMD [ "npm" , "start" ]
