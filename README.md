@@ -9,7 +9,7 @@
 [![CircleCI](https://circleci.com/gh/mojaloop/gsp-connector.svg?style=svg)](https://circleci.com/gh/mojaloop/gsp-connector)
 -->
 
-A Connector was developed for the [Mojaloop Bootcamp for PISPs](https://mojaloop.io/events/mojaloop-bootcamp-for-pisps/) by Mojaloop's Team.
+A Connector was developed for the [Mojaloop Bootcamp for PISPs](https://mojaloop.io/events/mojaloop-bootcamp-for-pisps/) (hosted by [DFS Lab](https://dfslab.net/mojaloop-bootcamp-for-pisps/)) by Mojaloop's Team.
 
 More info about the Mojaloop's team submission can be found here: https://github.com/mojaloop/ml-pisp-bootcamp.
 
